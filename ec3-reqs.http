@@ -1,0 +1,46 @@
+@server = https://angelloxz-shiny-space-waddle-q7qq69w96vqx3qgp-8080.preview.app.github.dev
+###
+GET {{server}}
+###
+GET {{server}}/instrumento
+###
+GET {{server}}/instrumento/1
+###
+GET {{server}}/instrumento?size=1
+###
+GET {{server}}/instrumento?size=1&page=1
+###
+GET {{server}}/instrumento?sort=nombre.desc
+###
+GET {{server}}/instrumento?sort=nombre.asc
+###
+POST {{server}}/instrumento
+Content-Type: application/json
+
+{"nombre": "guitarra"}
+###
+DELETE {{server}}/instrumento/103
+###
+PATCH {{server}}/instrumento/53
+Content-Type: application/json
+
+{"nombre": "bombo"}
+###
+GET {{server}}/profile/instrumento
+
+############## categoria
+GET {{server}}/categorias
+###
+POST {{server}}/categorias
+Content-Type: application/json
+
+{"nombre": "Instrumentos de Viento"}
+###
+PATCH {{server}}/categorias/1
+Content-Type: application/json
+
+{"nombre": "Instrumentos de eléctricos"}
+###
+GET {{server}}/instrumento/1/categoria
+###
+GET {{server}}/instrumento?sort=nombre,desc

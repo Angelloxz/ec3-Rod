@@ -1,19 +1,21 @@
 package com.example.demo;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderBy;
+
+import java.util.Set;
+import java.util.HashSet;
 
 @Entity
-@Table(name = "instrumento")
+@Table(name = "categoria")
 
-public class Instrumento {
-    
+public class Categoria {
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 
@@ -21,9 +23,9 @@ public class Instrumento {
 
     private String nombre;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_categoria")
-    private Categoria categoria;
+    @OneToMany(targetEntity = Instrumento.class, mappedBy = "categoria")
+    @OrderBy("nombre ASC")
+    private Set<Instrumento> instrumentos = new HashSet<Instrumento>();
 
     public Integer getId() {
         return id;
@@ -41,13 +43,14 @@ public class Instrumento {
         this.nombre = nombre;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
+    public Set<Instrumento> getInstrumentos() {
+        return instrumentos;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setInstrumentos(Set<Instrumento> instrumentos) {
+        this.instrumentos = instrumentos;
     }
 
+    
     
 }
