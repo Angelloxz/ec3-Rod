@@ -1,0 +1,18 @@
+@server = https://angelloxz-shiny-space-waddle-q7qq69w96vqx3qgp-8080.preview.app.github.dev
+@apiserver = {{server}}/api/instrumento
+###
+GET {{server}}/codigo
+###
+GET {{server}}/nombre-completo
+###
+GET {{apiserver}}/listar
+###
+POST {{apiserver}}/nuevo
+Content-Type: application/x-www-form-urlencoded
+
+nombre=flauta
+###
+DELETE {{apiserver}}/eliminar
+Content-Type: application/x-www-form-urlencoded
+
+id=2
